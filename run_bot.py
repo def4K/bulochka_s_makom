@@ -34,20 +34,26 @@ while True:
         user_name = vk_bot.method('users.get', {'user_ids': user_id})
         if 'картинк' in update[0][6]:
                                     write_msg_attach(user_id,
-                                                     'Вот тебе смешная картинка',
-                                                     'photo412358374_456239472')
+                                                     'Вот тебе офигенная картинка',
+                                                     'photo410036237_456240754')
 
         elif 'привет' in update[0][6]:
                                     write_msg(user_id, 'Привет, ' + (user_name[0]['first_name']))
 
         elif 'помощ' in update[0][6]:
-                                   write_msg(user_id, '1. Чтобы получить смешную картинку напиши: "картинка";\n'
-                                                      ' 2. Для того чтобы тебе помогли с ошибкой напиши: "python"')
+                                    write_msg(user_id, '1. Чтобы получить смешную картинку напиши: "картинка";\n'
+                                                       ' 2. Для того чтобы тебе помогли с ошибкой напиши: "python"')
+
+        elif 'спасиб' in update[0][6]:
+            write_msg(user_id, 'Пожалуйста, ' + (user_name[0]['first_name']))
+
+        elif 'python' in update[0][6]:
+            write_msg(user_id, 'Напиши код своей ошибки (например SyntaxError или IndentationError')
 
         else:
-         write_msg(user_id, 'Прости, ' + (user_name[0]['first_name']) + ', у меня нет такой команды')   # сообщение пользователю
-         print(str(user_name[0]['first_name']) + ' ' +
-               str(user_name[0]['last_name']) + ' написал(а) боту - ' + str(update[0][6])) # сообщение нам
+            write_msg(user_id, 'Прости, ' + (user_name[0]['first_name']) + ', у меня нет такой команды')   # сообщение пользователю
+            print(str(user_name[0]['first_name']) + ' ' +
+                  str(user_name[0]['last_name']) + ' написал(а) боту - ' + str(update[0][6])) # сообщение нам
 
-  # Меняем ts для следующего запроса
+    # Меняем ts для следующего запроса
     ts = long_poll['ts']
